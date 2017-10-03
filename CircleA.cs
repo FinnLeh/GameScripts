@@ -5,164 +5,83 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CircleA : MonoBehaviour
+public class Circle : MonoBehaviour
 {
-
-    public static bool rot1 = false;
-    public static bool blau1 = false;
-    public static bool grün1 = false;
-    public static bool gelb1 = false;
-    public static bool oranje1 = false;
-    public static bool braun1 = false;
-    public static bool grau1 = false;
-
-    
+    public static bool rot = false;
+    public static bool blau = false;
+    public static bool grün = false;
+    public static bool gelb = false;
+    public static bool oranje = false;
+    public static bool braun = false;
+    public static bool grau = false; 
 
     public bool fault = false;
-    public static bool scoreA = false;
+    public static bool score = false;
     public static bool clicked = false;
     
 
     //Hier NumberOther... für die anderen Circle einfügen!
-    void NumberOtherB()
+    void NumberOther(Circle circle, Mittelpunkt mittelpunkt)
     {
-        if (Mittelpunkt.red1 == true || Mittelpunkt.blue1 == true || Mittelpunkt.yellow1 == true || Mittelpunkt.green1 == true || Mittelpunkt.gray1 == true || Mittelpunkt.orange1 == true || Mittelpunkt.brown1 == true)
+        if (mittelpunkt.red || mittelpunkt.blue || mittelpunkt.yellow || mittelpunkt.green || mittelpunkt.gray || mittelpunkt.orange || mittelpunkt.brown)
         {
             System.Random Num = new System.Random();
             int a = Num.Next(0, 7);
 
             if (a == 0)
             {
-                CircleB.rot2 = true;
+                circle.rot = true;
             }
             else if (a == 1)
             {
-                CircleB.blau2 = true;
+                circle.blau = true;
             }
             else if (a == 2)
             {
-                CircleB.grün2 = true;
+                circle.grün = true;
             }
             else if (a == 3)
             {
-                CircleB.gelb2 = true;
+                circle.gelb = true;
             }
             else if (a == 4)
             {
-                CircleB.oranje2 = true;
+                circle.oranje = true;
             }
             else if (a == 5)
             {
-                CircleB.braun2 = true;
+                circle.braun = true;
             }
             else if (a == 6)
             {
-                CircleB.grau2 = true;
+                circle.grau = true;
             }
         }
     }
 
-    void NumberOtherC()
+    private void OnMouseDown(Mittelpunkt mittelpunkt)
     {
-        if (Mittelpunkt.red1 == true || Mittelpunkt.blue1 == true || Mittelpunkt.yellow1 == true || Mittelpunkt.green1 == true || Mittelpunkt.gray1 == true || Mittelpunkt.orange1 == true || Mittelpunkt.brown1 == true)
+        if (mittelpunkt.red || mittelpunkt.blue || mittelpunkt.yellow || mittelpunkt.green || mittelpunkt.orange || mittelpunkt.brown || Mittelpunkt.gray)
         {
-            System.Random Num = new System.Random();
-            int a = Num.Next(0, 7);
-
-            if (a == 0)
-            {
-                CircleC.rot3 = true;
-            }
-            else if (a == 1)
-            {
-                CircleC.blau3 = true;
-            }
-            else if (a == 2)
-            {
-                CircleC.grün3 = true;
-            }
-            else if (a == 3)
-            {
-                CircleC.gelb3 = true;
-            }
-            else if (a == 4)
-            {
-                CircleC.oranje3 = true;
-            }
-            else if (a == 5)
-            {
-                CircleC.braun3 = true;
-            }
-            else if (a == 6)
-            {
-                CircleC.grau3 = true;
-            }
-        }
-    }
-
-    void NumberOtherD()
-    {
-        if (Mittelpunkt.red1 == true || Mittelpunkt.blue1 == true || Mittelpunkt.yellow1 == true || Mittelpunkt.green1 == true || Mittelpunkt.gray1 == true || Mittelpunkt.orange1 == true || Mittelpunkt.brown1 == true)
-        {
-            System.Random Num = new System.Random();
-            int a = Num.Next(0, 7);
-
-            if (a == 0)
-            {
-                CircleD.rot4 = true;
-            }
-            else if (a == 1)
-            {
-                CircleD.blau4 = true;
-            }
-            else if (a == 2)
-            {
-                CircleD.grün4 = true;
-            }
-            else if (a == 3)
-            {
-                CircleD.gelb4 = true;
-            }
-            else if (a == 4)
-            {
-                CircleD.oranje4 = true;
-            }
-            else if (a == 5)
-            {
-                CircleD.braun4 = true;
-            }
-            else if (a == 6)
-            {
-                CircleD.grau4 = true;
-            }
-        }
-    }
-
-
-    private void OnMouseDown()
-    {
-        if (Mittelpunkt.red1 == true || Mittelpunkt.blue1 == true || Mittelpunkt.yellow1 == true || Mittelpunkt.green1 == true || Mittelpunkt.orange1 == true || Mittelpunkt.brown1 == true || Mittelpunkt.gray1 == true)
-        {
-            scoreA = true;
+            score = true;
             clicked = true;
-            Mittelpunkt.red1 = false;
-            Mittelpunkt.blue1 = false;
-            Mittelpunkt.yellow1 = false;
-            Mittelpunkt.green1 = false;
-            Mittelpunkt.orange1 = false;
-            Mittelpunkt.brown1 = false;
-            Mittelpunkt.gray1 = false;
-        }else if (Mittelpunkt.red1 != true && Mittelpunkt.blue1 != true && Mittelpunkt.yellow1 != true && Mittelpunkt.green1 != true && Mittelpunkt.orange1 != true && Mittelpunkt.brown1 != true && Mittelpunkt.gray1 != true)
-        {
+            mittelpunkt.red = false;
+            mittelpunkt.blue = false;
+            mittelpunkt.yellow = false;
+            mittelpunkt.green = false;
+            mittelpunkt.orange = false;
+            mittelpunkt.brown = false;
+            mittelpunkt.gray = false;
+        } else {
             Application.LoadLevel(2);
         }
     }
 
     //Mit globalen Variablen?
     //Test! Noch nicht final!
-    public void changeRed()
+    public void changeRed(Mittelpunkt mittelpunkt)
     {
-        if (Mittelpunkt.red1 == true)
+        if (mittelpunkt.red == true)
         {
             Renderer rend = GetComponent<Renderer>();
             rend.material.shader = Shader.Find("GUI/Text Shader");
@@ -170,9 +89,9 @@ public class CircleA : MonoBehaviour
         }
     }
 
-    public void changeBlue()
+    public void changeBlue(Mittelpunkt mittelpunkt)
     {
-        if (Mittelpunkt.blue1 == true)
+        if (mittelpunkt.blue == true)
         {
             Renderer rend = GetComponent<Renderer>();
             rend.material.shader = Shader.Find("GUI/Text Shader");
@@ -180,9 +99,9 @@ public class CircleA : MonoBehaviour
         }
     }
     
-    public void changeGreen()
+    public void changeGreen(Mittelpunkt mittelpunkt)
     {
-        if (Mittelpunkt.green1 == true)
+        if (mittelpunkt.green == true)
         {
             Renderer rend = GetComponent<Renderer>();
             rend.material.shader = Shader.Find("GUI/Text Shader");
@@ -190,9 +109,9 @@ public class CircleA : MonoBehaviour
         }
     }
 
-    public void changeYellow()
+    public void changeYellow(Mittelpunkt mittelpunkt)
     {
-        if (Mittelpunkt.yellow1 == true)
+        if (mittelpunkt.yellow == true)
         {
             Renderer rend = GetComponent<Renderer>();
             rend.material.shader = Shader.Find("GUI/Text Shader");
@@ -200,9 +119,9 @@ public class CircleA : MonoBehaviour
         }
     }
 
-    public void changeOrange()
+    public void changeOrange(Mittelpunkt mittelpunkt)
     {
-        if (Mittelpunkt.orange1 == true)
+        if (mittelpunkt.orange == true)
         {
             Renderer rend = GetComponent<Renderer>();
             rend.material.shader = Shader.Find("GUI/Text Shader");
@@ -210,9 +129,9 @@ public class CircleA : MonoBehaviour
         }
     }
 
-    public void changeBrown()
+    public void changeBrown(Mittelpunkt mittelpunkt)
     {
-        if (Mittelpunkt.brown1 == true)
+        if (mittelpunkt.brown == true)
         {
             Renderer rend = GetComponent<Renderer>();
             rend.material.shader = Shader.Find("GUI/Text Shader");
@@ -220,9 +139,9 @@ public class CircleA : MonoBehaviour
         }
     }
 
-    public void changeGray()
+    public void changeGray(Mittelpunkt mittelpunkt)
     {
-        if (Mittelpunkt.gray1 == true)
+        if (mittelpunkt.gray == true)
         {
             Renderer rend = GetComponent<Renderer>();
             rend.material.shader = Shader.Find("GUI/Text Shader");
