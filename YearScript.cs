@@ -14,8 +14,8 @@ public class AktuellesJahrHauptSpiel : MonoBehaviour {
 
     private void Awake()
     {
-	//Das GameObject in Unity heißt AktuellesJahr.
-	Aktuell_Jahr = GameObject.Find("AktuellesJahr");
+		//Das GameObject in Unity heißt AktuellesJahr.
+		Aktuell_Jahr = GameObject.Find("AktuellesJahr");
         if (instance == null)
         {
             DontDestroyOnLoad(Aktuell_Jahr);
