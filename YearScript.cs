@@ -9,9 +9,17 @@ public class AktuellesJahrHauptSpiel : MonoBehaviour {
     public static int JahrAD = 0;
     private Text aktuellesJahr;
     public bool year = false;
+    public static AktuellesJahrHauptSpiel instance;
+    public GameObject Aktuell_Jahr;
 
     private void Awake()
     {
+	//Das GameObject in Unity heißt AktuellesJahr.
+	Aktuell_Jahr = GameObject.Find("AktuellesJahr");
+        if (instance == null)
+        {
+            DontDestroyOnLoad(Aktuell_Jahr);
+        }
         aktuellesJahr = GetComponent<Text>();
     }
 
